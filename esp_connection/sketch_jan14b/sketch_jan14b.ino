@@ -1,12 +1,12 @@
 #include <SoftwareSerial.h>
- 
+const int BAUD_RATE=115200;
 SoftwareSerial esp8266(10,11); // make RX Arduino line is pin 2, make TX Arduino line is pin 3.
                              // This means that you need to connect the TX line from the esp to the Arduino's pin 2
                              // and the RX line from the esp to the Arduino's pin 3
 void setup()
 {
-  Serial.begin(115200);
-  esp8266.begin(115200); // your esp's baud rate might be different
+  Serial.begin(BAUD_RATE);
+  esp8266.begin(BAUD_RATE); // your esp's baud rate might be different
 }
  
 void loop()
@@ -38,5 +38,7 @@ void loop()
       command+=(char)Serial.read();
     }
     esp8266.println(command); // send the read character to the esp8266
+    
+     // send the read character to the esp8266
   }
 }
