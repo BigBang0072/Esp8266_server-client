@@ -47,10 +47,10 @@ try :
             print 'Hostname could not be resolved. Exiting'
             sys.exit()
         s.send(message)
-        time.sleep(2)
+        time.sleep(1.0005)
         k=s.recv(15)
         print "Got Data:",k
-        time.sleep(2)
+        #time.sleep(1)
         
 except socket.error:
     #Send failed

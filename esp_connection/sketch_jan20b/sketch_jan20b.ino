@@ -54,16 +54,16 @@ void setup()
   }
   delay(delay_time);
 }
-
+int i=100;
 void loop() 
 {
   if(wifi_module.find("+IPD"))
   {
    Serial.println("Got the Connection");
-   wifi_module.println("AT+CIPSEND=0,15");
-   delay(1000);
-   wifi_module.println("BhagatMadarchod");
-   delay(delay_time);
+   wifi_module.println("AT+CIPSEND=0,3");
+   delay(25);
+   wifi_module.println(i);
+   i=i+1;
   }
 }
 
