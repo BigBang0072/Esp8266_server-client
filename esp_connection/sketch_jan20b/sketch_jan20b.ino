@@ -1,4 +1,8 @@
 #include <SoftwareSerial.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+#define features 6
 const int delay_time=1000;
 
 SoftwareSerial wifi_module(10, 11); // RX, TX
@@ -54,16 +58,33 @@ void setup()
   }
   delay(delay_time);
 }
-int i=100;
+
+int i=0;
+int j=0;
+int arr[5][5]={{1,2,3,4,5},
+               {1,2,3,4,5},
+               {1,2,3,4,5},
+               {1,2,3,4,5},
+               {1,2,3,4,5}
+                };
 void loop() 
 {
   if(wifi_module.find("+IPD"))
   {
-   Serial.println("Got the Connection");
+   //Serial.println("Got the Connection");
    wifi_module.println("AT+CIPSEND=0,3");
    delay(25);
-   wifi_module.println(i);
-   i=i+1;
+   //wifi_module.println(i);
+   if (i<5){
+    wifi_module.println(arr[i][j]);
+    Serial.println(arr[i][j]);
+   }
+   j=j+1;
+   if (j==5){
+    j=0;
+    i=i+1;
+   }
+   //i=i+1;
   }
 }
 
